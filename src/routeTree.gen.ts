@@ -11,14 +11,20 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AgentRouteImport } from './routes/agent'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as AgentIndexRouteImport } from './routes/agent.index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardNewRouteImport } from './routes/dashboard.new'
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
+import { Route as AgentScanRouteImport } from './routes/agent.scan'
+import { Route as AgentProfileRouteImport } from './routes/agent.profile'
+import { Route as AgentDeliveriesRouteImport } from './routes/agent.deliveries'
 import { Route as DashboardProofsIndexRouteImport } from './routes/dashboard.proofs.index'
 import { Route as DashboardProofsIdRouteImport } from './routes/dashboard.proofs.$id'
 import { Route as DashboardCertificateIdRouteImport } from './routes/dashboard.certificate.$id'
+import { Route as AgentDeliveryIdRouteImport } from './routes/agent.delivery.$id'
 
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
@@ -30,6 +36,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentRoute = AgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -39,6 +50,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => DashboardRoute,
+} as any)
+const AgentIndexRoute = AgentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AgentRoute,
 } as any)
 const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
   id: '/settings',
@@ -55,6 +71,21 @@ const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => DashboardRoute,
 } as any)
+const AgentScanRoute = AgentScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => AgentRoute,
+} as any)
+const AgentProfileRoute = AgentProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AgentRoute,
+} as any)
+const AgentDeliveriesRoute = AgentDeliveriesRouteImport.update({
+  id: '/deliveries',
+  path: '/deliveries',
+  getParentRoute: () => AgentRoute,
+} as any)
 const DashboardProofsIndexRoute = DashboardProofsIndexRouteImport.update({
   id: '/proofs/',
   path: '/proofs/',
@@ -70,15 +101,26 @@ const DashboardCertificateIdRoute = DashboardCertificateIdRouteImport.update({
   path: '/certificate/$id',
   getParentRoute: () => DashboardRoute,
 } as any)
+const AgentDeliveryIdRoute = AgentDeliveryIdRouteImport.update({
+  id: '/delivery/$id',
+  path: '/delivery/$id',
+  getParentRoute: () => AgentRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agent': typeof AgentRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent/': typeof AgentIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
   '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
   '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
   '/dashboard/proofs/': typeof DashboardProofsIndexRoute
@@ -86,10 +128,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent': typeof AgentIndexRoute
   '/dashboard': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
   '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
   '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
   '/dashboard/proofs': typeof DashboardProofsIndexRoute
@@ -97,12 +144,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agent': typeof AgentRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent/': typeof AgentIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
   '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
   '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
   '/dashboard/proofs/': typeof DashboardProofsIndexRoute
@@ -111,12 +164,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agent'
     | '/dashboard'
     | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
+    | '/agent/'
     | '/dashboard/'
+    | '/agent/delivery/$id'
     | '/dashboard/certificate/$id'
     | '/dashboard/proofs/$id'
     | '/dashboard/proofs/'
@@ -124,22 +183,33 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
+    | '/agent'
     | '/dashboard'
+    | '/agent/delivery/$id'
     | '/dashboard/certificate/$id'
     | '/dashboard/proofs/$id'
     | '/dashboard/proofs'
   id:
     | '__root__'
     | '/'
+    | '/agent'
     | '/dashboard'
     | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
+    | '/agent/'
     | '/dashboard/'
+    | '/agent/delivery/$id'
     | '/dashboard/certificate/$id'
     | '/dashboard/proofs/$id'
     | '/dashboard/proofs/'
@@ -147,6 +217,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentRoute: typeof AgentRouteWithChildren
   DashboardRoute: typeof DashboardRouteWithChildren
   LoginRoute: typeof LoginRoute
 }
@@ -167,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agent': {
+      id: '/agent'
+      path: '/agent'
+      fullPath: '/agent'
+      preLoaderRoute: typeof AgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -180,6 +258,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/agent/': {
+      id: '/agent/'
+      path: '/'
+      fullPath: '/agent/'
+      preLoaderRoute: typeof AgentIndexRouteImport
+      parentRoute: typeof AgentRoute
     }
     '/dashboard/settings': {
       id: '/dashboard/settings'
@@ -202,6 +287,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardHistoryRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/agent/scan': {
+      id: '/agent/scan'
+      path: '/scan'
+      fullPath: '/agent/scan'
+      preLoaderRoute: typeof AgentScanRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/agent/profile': {
+      id: '/agent/profile'
+      path: '/profile'
+      fullPath: '/agent/profile'
+      preLoaderRoute: typeof AgentProfileRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/agent/deliveries': {
+      id: '/agent/deliveries'
+      path: '/deliveries'
+      fullPath: '/agent/deliveries'
+      preLoaderRoute: typeof AgentDeliveriesRouteImport
+      parentRoute: typeof AgentRoute
+    }
     '/dashboard/proofs/': {
       id: '/dashboard/proofs/'
       path: '/proofs'
@@ -223,8 +329,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardCertificateIdRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/agent/delivery/$id': {
+      id: '/agent/delivery/$id'
+      path: '/delivery/$id'
+      fullPath: '/agent/delivery/$id'
+      preLoaderRoute: typeof AgentDeliveryIdRouteImport
+      parentRoute: typeof AgentRoute
+    }
   }
 }
+
+interface AgentRouteChildren {
+  AgentDeliveriesRoute: typeof AgentDeliveriesRoute
+  AgentProfileRoute: typeof AgentProfileRoute
+  AgentScanRoute: typeof AgentScanRoute
+  AgentIndexRoute: typeof AgentIndexRoute
+  AgentDeliveryIdRoute: typeof AgentDeliveryIdRoute
+}
+
+const AgentRouteChildren: AgentRouteChildren = {
+  AgentDeliveriesRoute: AgentDeliveriesRoute,
+  AgentProfileRoute: AgentProfileRoute,
+  AgentScanRoute: AgentScanRoute,
+  AgentIndexRoute: AgentIndexRoute,
+  AgentDeliveryIdRoute: AgentDeliveryIdRoute,
+}
+
+const AgentRouteWithChildren = AgentRoute._addFileChildren(AgentRouteChildren)
 
 interface DashboardRouteChildren {
   DashboardHistoryRoute: typeof DashboardHistoryRoute
@@ -252,6 +383,7 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentRoute: AgentRouteWithChildren,
   DashboardRoute: DashboardRouteWithChildren,
   LoginRoute: LoginRoute,
 }
