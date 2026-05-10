@@ -9,38 +9,242 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AgentRouteImport } from './routes/agent'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as AgentIndexRouteImport } from './routes/agent.index'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
+import { Route as DashboardNewRouteImport } from './routes/dashboard.new'
+import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
+import { Route as AgentScanRouteImport } from './routes/agent.scan'
+import { Route as AgentProfileRouteImport } from './routes/agent.profile'
+import { Route as AgentDeliveriesRouteImport } from './routes/agent.deliveries'
+import { Route as DashboardProofsIndexRouteImport } from './routes/dashboard.proofs.index'
+import { Route as DashboardProofsIdRouteImport } from './routes/dashboard.proofs.$id'
+import { Route as DashboardCertificateIdRouteImport } from './routes/dashboard.certificate.$id'
+import { Route as AgentDeliveryIdRouteImport } from './routes/agent.delivery.$id'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentRoute = AgentRouteImport.update({
+  id: '/agent',
+  path: '/agent',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const AgentIndexRoute = AgentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AgentRoute,
+} as any)
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardNewRoute = DashboardNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const AgentScanRoute = AgentScanRouteImport.update({
+  id: '/scan',
+  path: '/scan',
+  getParentRoute: () => AgentRoute,
+} as any)
+const AgentProfileRoute = AgentProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AgentRoute,
+} as any)
+const AgentDeliveriesRoute = AgentDeliveriesRouteImport.update({
+  id: '/deliveries',
+  path: '/deliveries',
+  getParentRoute: () => AgentRoute,
+} as any)
+const DashboardProofsIndexRoute = DashboardProofsIndexRouteImport.update({
+  id: '/proofs/',
+  path: '/proofs/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardProofsIdRoute = DashboardProofsIdRouteImport.update({
+  id: '/proofs/$id',
+  path: '/proofs/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardCertificateIdRoute = DashboardCertificateIdRouteImport.update({
+  id: '/certificate/$id',
+  path: '/certificate/$id',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const AgentDeliveryIdRoute = AgentDeliveryIdRouteImport.update({
+  id: '/delivery/$id',
+  path: '/delivery/$id',
+  getParentRoute: () => AgentRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agent': typeof AgentRouteWithChildren
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/new': typeof DashboardNewRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent/': typeof AgentIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
+  '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
+  '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
+  '/dashboard/proofs/': typeof DashboardProofsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/new': typeof DashboardNewRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent': typeof AgentIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
+  '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
+  '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
+  '/dashboard/proofs': typeof DashboardProofsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agent': typeof AgentRouteWithChildren
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/agent/deliveries': typeof AgentDeliveriesRoute
+  '/agent/profile': typeof AgentProfileRoute
+  '/agent/scan': typeof AgentScanRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/new': typeof DashboardNewRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
+  '/agent/': typeof AgentIndexRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/agent/delivery/$id': typeof AgentDeliveryIdRoute
+  '/dashboard/certificate/$id': typeof DashboardCertificateIdRoute
+  '/dashboard/proofs/$id': typeof DashboardProofsIdRoute
+  '/dashboard/proofs/': typeof DashboardProofsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agent'
+    | '/dashboard'
+    | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
+    | '/dashboard/history'
+    | '/dashboard/new'
+    | '/dashboard/settings'
+    | '/agent/'
+    | '/dashboard/'
+    | '/agent/delivery/$id'
+    | '/dashboard/certificate/$id'
+    | '/dashboard/proofs/$id'
+    | '/dashboard/proofs/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
+    | '/dashboard/history'
+    | '/dashboard/new'
+    | '/dashboard/settings'
+    | '/agent'
+    | '/dashboard'
+    | '/agent/delivery/$id'
+    | '/dashboard/certificate/$id'
+    | '/dashboard/proofs/$id'
+    | '/dashboard/proofs'
+  id:
+    | '__root__'
+    | '/'
+    | '/agent'
+    | '/dashboard'
+    | '/login'
+    | '/agent/deliveries'
+    | '/agent/profile'
+    | '/agent/scan'
+    | '/dashboard/history'
+    | '/dashboard/new'
+    | '/dashboard/settings'
+    | '/agent/'
+    | '/dashboard/'
+    | '/agent/delivery/$id'
+    | '/dashboard/certificate/$id'
+    | '/dashboard/proofs/$id'
+    | '/dashboard/proofs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentRoute: typeof AgentRouteWithChildren
+  DashboardRoute: typeof DashboardRouteWithChildren
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agent': {
+      id: '/agent'
+      path: '/agent'
+      fullPath: '/agent'
+      preLoaderRoute: typeof AgentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +252,141 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/agent/': {
+      id: '/agent/'
+      path: '/'
+      fullPath: '/agent/'
+      preLoaderRoute: typeof AgentIndexRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/new': {
+      id: '/dashboard/new'
+      path: '/new'
+      fullPath: '/dashboard/new'
+      preLoaderRoute: typeof DashboardNewRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/history': {
+      id: '/dashboard/history'
+      path: '/history'
+      fullPath: '/dashboard/history'
+      preLoaderRoute: typeof DashboardHistoryRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/agent/scan': {
+      id: '/agent/scan'
+      path: '/scan'
+      fullPath: '/agent/scan'
+      preLoaderRoute: typeof AgentScanRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/agent/profile': {
+      id: '/agent/profile'
+      path: '/profile'
+      fullPath: '/agent/profile'
+      preLoaderRoute: typeof AgentProfileRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/agent/deliveries': {
+      id: '/agent/deliveries'
+      path: '/deliveries'
+      fullPath: '/agent/deliveries'
+      preLoaderRoute: typeof AgentDeliveriesRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/dashboard/proofs/': {
+      id: '/dashboard/proofs/'
+      path: '/proofs'
+      fullPath: '/dashboard/proofs/'
+      preLoaderRoute: typeof DashboardProofsIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/proofs/$id': {
+      id: '/dashboard/proofs/$id'
+      path: '/proofs/$id'
+      fullPath: '/dashboard/proofs/$id'
+      preLoaderRoute: typeof DashboardProofsIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/certificate/$id': {
+      id: '/dashboard/certificate/$id'
+      path: '/certificate/$id'
+      fullPath: '/dashboard/certificate/$id'
+      preLoaderRoute: typeof DashboardCertificateIdRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/agent/delivery/$id': {
+      id: '/agent/delivery/$id'
+      path: '/delivery/$id'
+      fullPath: '/agent/delivery/$id'
+      preLoaderRoute: typeof AgentDeliveryIdRouteImport
+      parentRoute: typeof AgentRoute
+    }
   }
 }
 
+interface AgentRouteChildren {
+  AgentDeliveriesRoute: typeof AgentDeliveriesRoute
+  AgentProfileRoute: typeof AgentProfileRoute
+  AgentScanRoute: typeof AgentScanRoute
+  AgentIndexRoute: typeof AgentIndexRoute
+  AgentDeliveryIdRoute: typeof AgentDeliveryIdRoute
+}
+
+const AgentRouteChildren: AgentRouteChildren = {
+  AgentDeliveriesRoute: AgentDeliveriesRoute,
+  AgentProfileRoute: AgentProfileRoute,
+  AgentScanRoute: AgentScanRoute,
+  AgentIndexRoute: AgentIndexRoute,
+  AgentDeliveryIdRoute: AgentDeliveryIdRoute,
+}
+
+const AgentRouteWithChildren = AgentRoute._addFileChildren(AgentRouteChildren)
+
+interface DashboardRouteChildren {
+  DashboardHistoryRoute: typeof DashboardHistoryRoute
+  DashboardNewRoute: typeof DashboardNewRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardCertificateIdRoute: typeof DashboardCertificateIdRoute
+  DashboardProofsIdRoute: typeof DashboardProofsIdRoute
+  DashboardProofsIndexRoute: typeof DashboardProofsIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardHistoryRoute: DashboardHistoryRoute,
+  DashboardNewRoute: DashboardNewRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardCertificateIdRoute: DashboardCertificateIdRoute,
+  DashboardProofsIdRoute: DashboardProofsIdRoute,
+  DashboardProofsIndexRoute: DashboardProofsIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentRoute: AgentRouteWithChildren,
+  DashboardRoute: DashboardRouteWithChildren,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
