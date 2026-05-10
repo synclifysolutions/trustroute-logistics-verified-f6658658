@@ -10,13 +10,13 @@ export const Route = createFileRoute("/dashboard")({
   component: DashboardLayout,
 });
 
-const navItems = [
+const navItems: { to: "/dashboard" | "/dashboard/new" | "/dashboard/history" | "/dashboard/proofs" | "/dashboard/settings"; label: string; icon: React.ElementType; exact?: boolean }[] = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/dashboard/new", label: "New Delivery", icon: Plus },
   { to: "/dashboard/history", label: "History", icon: History },
   { to: "/dashboard/proofs", label: "Proof Records", icon: FileCheck2 },
   { to: "/dashboard/settings", label: "Settings", icon: Settings },
-] as const;
+];
 
 function DashboardLayout() {
   const [collapsed, setCollapsed] = useState(false);
