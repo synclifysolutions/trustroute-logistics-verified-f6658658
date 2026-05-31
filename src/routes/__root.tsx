@@ -216,17 +216,17 @@ function RootShell({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+   <html lang="en">
       <head>
         <HeadContent />
       </head>
 
-      <body className="min-h-screen bg-[#070B14] font-['Plus_Jakarta_Sans'] antialiased text-white">
+     <body className="min-h-screen bg-white font-['Plus_Jakarta_Sans'] antialiased text-gray-900">
         {/* Animated Background */}
         <div className="fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-violet-600/20 blur-3xl" />
+          <div className="absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-red-200/40 blur-3xl" />
 
-          <div className="absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-3xl" />
+          <div className="absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-red-100/60 blur-3xl" />
 
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>

@@ -51,76 +51,77 @@
 :root {
   --radius: 0.875rem;
 
-  /* Deep midnight navy base */
-  --background: oklch(0.16 0.04 270);
-  --foreground: oklch(0.97 0.01 250);
+  /* Clean white base */
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.15 0.01 0);
 
-  --card: oklch(0.21 0.04 270);
-  --card-foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.97 0.005 10);
+  --card-foreground: oklch(0.15 0.01 0);
 
-  --popover: oklch(0.19 0.04 270);
-  --popover-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.15 0.01 0);
 
-  /* Violet primary */
-  --primary: oklch(0.68 0.22 290);
+  /* Red primary */
+  --primary: oklch(0.53 0.22 27);
   --primary-foreground: oklch(0.99 0 0);
 
-  /* Cyan accent */
-  --secondary: oklch(0.78 0.16 220);
-  --secondary-foreground: oklch(0.16 0.04 270);
+  /* Light red secondary */
+  --secondary: oklch(0.93 0.03 15);
+  --secondary-foreground: oklch(0.53 0.22 27);
 
-  --muted: oklch(0.26 0.04 270);
-  --muted-foreground: oklch(0.72 0.03 260);
+  --muted: oklch(0.95 0.01 10);
+  --muted-foreground: oklch(0.50 0.01 0);
 
-  --accent: oklch(0.72 0.20 200);
-  --accent-foreground: oklch(0.16 0.04 270);
+  --accent: oklch(0.93 0.03 15);
+  --accent-foreground: oklch(0.53 0.22 27);
 
-  --destructive: oklch(0.65 0.24 22);
+  --destructive: oklch(0.53 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
   --success: oklch(0.74 0.18 155);
-  --success-foreground: oklch(0.16 0.04 270);
+  --success-foreground: oklch(0.99 0 0);
 
   --warning: oklch(0.78 0.17 70);
-  --warning-foreground: oklch(0.16 0.04 270);
+  --warning-foreground: oklch(0.15 0.01 0);
 
-  --info: oklch(0.72 0.16 240);
+  --info: oklch(0.60 0.16 240);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.68 0.22 290);
+  --border: oklch(0.88 0.02 15);
+  --input: oklch(0.90 0.02 15);
+  --ring: oklch(0.53 0.22 27);
 
-  --glass: oklch(1 0 0 / 5%);
-  --glass-border: oklch(1 0 0 / 12%);
+  --glass: oklch(0.53 0.22 27 / 5%);
+  --glass-border: oklch(0.53 0.22 27 / 15%);
 
-  /* Brand gradients */
-  --gradient-primary: linear-gradient(135deg, oklch(0.68 0.22 290), oklch(0.72 0.20 240));
-  --gradient-accent: linear-gradient(135deg, oklch(0.78 0.18 200), oklch(0.78 0.18 155));
-  --gradient-warm: linear-gradient(135deg, oklch(0.72 0.20 30), oklch(0.7 0.22 340));
+  /* Red brand gradients */
+  --gradient-primary: linear-gradient(135deg, oklch(0.53 0.22 27), oklch(0.45 0.20 20));
+  --gradient-accent: linear-gradient(135deg, oklch(0.93 0.03 15), oklch(0.97 0.01 10));
+  --gradient-warm: linear-gradient(135deg, oklch(0.53 0.22 27), oklch(0.60 0.20 35));
   --gradient-mesh:
-    radial-gradient(at 20% 10%, oklch(0.45 0.22 290 / 0.55) 0px, transparent 55%),
-    radial-gradient(at 85% 15%, oklch(0.55 0.20 220 / 0.45) 0px, transparent 50%),
-    radial-gradient(at 75% 85%, oklch(0.50 0.20 320 / 0.45) 0px, transparent 55%),
-    radial-gradient(at 10% 90%, oklch(0.50 0.20 250 / 0.5) 0px, transparent 55%);
+    radial-gradient(at 20% 10%, oklch(0.53 0.22 27 / 0.15) 0px, transparent 55%),
+    radial-gradient(at 85% 15%, oklch(0.93 0.03 15 / 0.20) 0px, transparent 50%),
+    radial-gradient(at 75% 85%, oklch(0.53 0.22 27 / 0.10) 0px, transparent 55%),
+    radial-gradient(at 10% 90%, oklch(0.93 0.03 15 / 0.15) 0px, transparent 55%);
 
-  /* Premium shadows */
-  --shadow-glow: 0 0 40px -10px oklch(0.68 0.22 290 / 0.55);
-  --shadow-glow-cyan: 0 0 40px -10px oklch(0.72 0.20 200 / 0.5);
-  --shadow-elevated: 0 25px 60px -25px oklch(0 0 0 / 0.6), 0 8px 20px -10px oklch(0 0 0 / 0.4);
-  --shadow-card: 0 1px 0 oklch(1 0 0 / 0.05) inset, 0 12px 32px -16px oklch(0 0 0 / 0.5);
+  /* Shadows */
+  --shadow-glow: 0 0 40px -10px oklch(0.53 0.22 27 / 0.30);
+  --shadow-glow-cyan: 0 0 40px -10px oklch(0.93 0.03 15 / 0.30);
+  --shadow-elevated: 0 25px 60px -25px oklch(0 0 0 / 0.15), 0 8px 20px -10px oklch(0 0 0 / 0.10);
+  --shadow-card: 0 1px 0 oklch(0.53 0.22 27 / 0.05) inset, 0 12px 32px -16px oklch(0 0 0 / 0.10);
 
-  --sidebar: oklch(0.18 0.04 270);
-  --sidebar-foreground: oklch(0.97 0.01 250);
-  --sidebar-primary: oklch(0.68 0.22 290);
+  /* Sidebar */
+  --sidebar: oklch(0.97 0.005 10);
+  --sidebar-foreground: oklch(0.15 0.01 0);
+  --sidebar-primary: oklch(0.53 0.22 27);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.26 0.04 270);
-  --sidebar-accent-foreground: oklch(0.97 0.01 250);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.68 0.22 290);
+  --sidebar-accent: oklch(0.93 0.03 15);
+  --sidebar-accent-foreground: oklch(0.53 0.22 27);
+  --sidebar-border: oklch(0.88 0.02 15);
+  --sidebar-ring: oklch(0.53 0.22 27);
 }
 
 .dark {
-  /* Same — app is dark by default */
+  /* Same as root — app is light by default */
 }
 
 @layer base {
@@ -150,7 +151,7 @@
     border: 1px solid var(--glass-border);
   }
   .glass-strong {
-    background-color: oklch(0.21 0.04 270 / 0.65);
+    background-color: oklch(0.97 0.005 10 / 0.85);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid var(--glass-border);
@@ -176,8 +177,8 @@
   .shadow-card { box-shadow: var(--shadow-card); }
   .grid-overlay {
     background-image:
-      linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
+      linear-gradient(oklch(0.53 0.22 27 / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.53 0.22 27 / 0.05) 1px, transparent 1px);
     background-size: 48px 48px;
   }
   @keyframes orb-float {
@@ -186,8 +187,8 @@
   }
   .animate-orb { animation: orb-float 14s ease-in-out infinite; }
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 oklch(0.74 0.18 155 / 0.5); }
-    50% { box-shadow: 0 0 0 8px oklch(0.74 0.18 155 / 0); }
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.53 0.22 27 / 0.5); }
+    50% { box-shadow: 0 0 0 8px oklch(0.53 0.22 27 / 0); }
   }
   .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
   @keyframes shimmer {
@@ -195,7 +196,7 @@
     100% { background-position: 200% 0; }
   }
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.08), transparent);
+    background: linear-gradient(90deg, transparent, oklch(0.53 0.22 27 / 0.08), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
