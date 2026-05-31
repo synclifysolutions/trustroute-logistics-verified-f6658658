@@ -18,10 +18,13 @@ import { Route as AgentIndexRouteImport } from './routes/agent.index'
 import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardNewRouteImport } from './routes/dashboard.new'
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
+import { Route as AgentSyncRouteImport } from './routes/agent.sync'
 import { Route as AgentScanRouteImport } from './routes/agent.scan'
 import { Route as AgentProfileRouteImport } from './routes/agent.profile'
+import { Route as AgentOtpRouteImport } from './routes/agent.otp'
 import { Route as AgentGpsRouteImport } from './routes/agent.gps'
 import { Route as AgentDeliveriesRouteImport } from './routes/agent.deliveries'
+import { Route as AgentCertificateRouteImport } from './routes/agent.certificate'
 import { Route as AgentCaptureRouteImport } from './routes/agent.capture'
 import { Route as DashboardProofsIndexRouteImport } from './routes/dashboard.proofs.index'
 import { Route as DashboardProofsIdRouteImport } from './routes/dashboard.proofs.$id'
@@ -73,6 +76,11 @@ const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => DashboardRoute,
 } as any)
+const AgentSyncRoute = AgentSyncRouteImport.update({
+  id: '/sync',
+  path: '/sync',
+  getParentRoute: () => AgentRoute,
+} as any)
 const AgentScanRoute = AgentScanRouteImport.update({
   id: '/scan',
   path: '/scan',
@@ -83,6 +91,11 @@ const AgentProfileRoute = AgentProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AgentRoute,
 } as any)
+const AgentOtpRoute = AgentOtpRouteImport.update({
+  id: '/otp',
+  path: '/otp',
+  getParentRoute: () => AgentRoute,
+} as any)
 const AgentGpsRoute = AgentGpsRouteImport.update({
   id: '/gps',
   path: '/gps',
@@ -91,6 +104,11 @@ const AgentGpsRoute = AgentGpsRouteImport.update({
 const AgentDeliveriesRoute = AgentDeliveriesRouteImport.update({
   id: '/deliveries',
   path: '/deliveries',
+  getParentRoute: () => AgentRoute,
+} as any)
+const AgentCertificateRoute = AgentCertificateRouteImport.update({
+  id: '/certificate',
+  path: '/certificate',
   getParentRoute: () => AgentRoute,
 } as any)
 const AgentCaptureRoute = AgentCaptureRouteImport.update({
@@ -125,10 +143,13 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/agent/capture': typeof AgentCaptureRoute
+  '/agent/certificate': typeof AgentCertificateRoute
   '/agent/deliveries': typeof AgentDeliveriesRoute
   '/agent/gps': typeof AgentGpsRoute
+  '/agent/otp': typeof AgentOtpRoute
   '/agent/profile': typeof AgentProfileRoute
   '/agent/scan': typeof AgentScanRoute
+  '/agent/sync': typeof AgentSyncRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
@@ -143,10 +164,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/agent/capture': typeof AgentCaptureRoute
+  '/agent/certificate': typeof AgentCertificateRoute
   '/agent/deliveries': typeof AgentDeliveriesRoute
   '/agent/gps': typeof AgentGpsRoute
+  '/agent/otp': typeof AgentOtpRoute
   '/agent/profile': typeof AgentProfileRoute
   '/agent/scan': typeof AgentScanRoute
+  '/agent/sync': typeof AgentSyncRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
@@ -164,10 +188,13 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/login': typeof LoginRoute
   '/agent/capture': typeof AgentCaptureRoute
+  '/agent/certificate': typeof AgentCertificateRoute
   '/agent/deliveries': typeof AgentDeliveriesRoute
   '/agent/gps': typeof AgentGpsRoute
+  '/agent/otp': typeof AgentOtpRoute
   '/agent/profile': typeof AgentProfileRoute
   '/agent/scan': typeof AgentScanRoute
+  '/agent/sync': typeof AgentSyncRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/new': typeof DashboardNewRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
@@ -186,10 +213,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/agent/capture'
+    | '/agent/certificate'
     | '/agent/deliveries'
     | '/agent/gps'
+    | '/agent/otp'
     | '/agent/profile'
     | '/agent/scan'
+    | '/agent/sync'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
@@ -204,10 +234,13 @@ export interface FileRouteTypes {
     | '/'
     | '/login'
     | '/agent/capture'
+    | '/agent/certificate'
     | '/agent/deliveries'
     | '/agent/gps'
+    | '/agent/otp'
     | '/agent/profile'
     | '/agent/scan'
+    | '/agent/sync'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
@@ -224,10 +257,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/login'
     | '/agent/capture'
+    | '/agent/certificate'
     | '/agent/deliveries'
     | '/agent/gps'
+    | '/agent/otp'
     | '/agent/profile'
     | '/agent/scan'
+    | '/agent/sync'
     | '/dashboard/history'
     | '/dashboard/new'
     | '/dashboard/settings'
@@ -311,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardHistoryRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/agent/sync': {
+      id: '/agent/sync'
+      path: '/sync'
+      fullPath: '/agent/sync'
+      preLoaderRoute: typeof AgentSyncRouteImport
+      parentRoute: typeof AgentRoute
+    }
     '/agent/scan': {
       id: '/agent/scan'
       path: '/scan'
@@ -325,6 +368,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgentProfileRouteImport
       parentRoute: typeof AgentRoute
     }
+    '/agent/otp': {
+      id: '/agent/otp'
+      path: '/otp'
+      fullPath: '/agent/otp'
+      preLoaderRoute: typeof AgentOtpRouteImport
+      parentRoute: typeof AgentRoute
+    }
     '/agent/gps': {
       id: '/agent/gps'
       path: '/gps'
@@ -337,6 +387,13 @@ declare module '@tanstack/react-router' {
       path: '/deliveries'
       fullPath: '/agent/deliveries'
       preLoaderRoute: typeof AgentDeliveriesRouteImport
+      parentRoute: typeof AgentRoute
+    }
+    '/agent/certificate': {
+      id: '/agent/certificate'
+      path: '/certificate'
+      fullPath: '/agent/certificate'
+      preLoaderRoute: typeof AgentCertificateRouteImport
       parentRoute: typeof AgentRoute
     }
     '/agent/capture': {
@@ -379,20 +436,26 @@ declare module '@tanstack/react-router' {
 
 interface AgentRouteChildren {
   AgentCaptureRoute: typeof AgentCaptureRoute
+  AgentCertificateRoute: typeof AgentCertificateRoute
   AgentDeliveriesRoute: typeof AgentDeliveriesRoute
   AgentGpsRoute: typeof AgentGpsRoute
+  AgentOtpRoute: typeof AgentOtpRoute
   AgentProfileRoute: typeof AgentProfileRoute
   AgentScanRoute: typeof AgentScanRoute
+  AgentSyncRoute: typeof AgentSyncRoute
   AgentIndexRoute: typeof AgentIndexRoute
   AgentDeliveryIdRoute: typeof AgentDeliveryIdRoute
 }
 
 const AgentRouteChildren: AgentRouteChildren = {
   AgentCaptureRoute: AgentCaptureRoute,
+  AgentCertificateRoute: AgentCertificateRoute,
   AgentDeliveriesRoute: AgentDeliveriesRoute,
   AgentGpsRoute: AgentGpsRoute,
+  AgentOtpRoute: AgentOtpRoute,
   AgentProfileRoute: AgentProfileRoute,
   AgentScanRoute: AgentScanRoute,
+  AgentSyncRoute: AgentSyncRoute,
   AgentIndexRoute: AgentIndexRoute,
   AgentDeliveryIdRoute: AgentDeliveryIdRoute,
 }
