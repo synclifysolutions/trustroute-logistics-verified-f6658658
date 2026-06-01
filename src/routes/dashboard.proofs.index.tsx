@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useApp } from "@/store/app-store";
 import { FileCheck2 } from "lucide-react";
@@ -9,7 +10,15 @@ export const Route = createFileRoute("/dashboard/proofs/")({
 });
 
 function ProofsList() {
-  const proofs = useApp((s) => s.deliveries.filter((d) => d.status === "completed"));
+  // 1. Grab the raw deliveries array from the store so the reference stays stable
+  const deliveries = useApp((s) => s.deliveries);
+  
+  // 2. Filter it inside a useMemo hook so it only recalculates when 'deliveries' changes
+  const proofs = useMemo(
+    () => deliveries.filter((d) => d.status === "completed"),
+    [deliveries]
+  );
+
   return (
     <div className="space-y-6">
       <div>
